@@ -1,8 +1,15 @@
 import React from "react";
+import { Nav } from "./Nav";
+import { SearchBar } from "./SearchBar";
 import "../styles/tailwind.css";
 
 const App = () => {
-  return <h1 className="text-red-500">Hola mundo!</h1>;
+  return (
+    <main>
+      <Nav />
+      <SearchBar />
+    </main>
+  );
 };
 
 export { App };
