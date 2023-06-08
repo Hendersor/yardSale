@@ -1,15 +1,22 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/components/*.{js,jsx}", "./src/styles/**/*.css"],
+  content: [
+    "./src/components/*.{js,jsx}",
+    "./src/pages/*.{js,jsx}",
+    "./src/styles/**/*.css",
+  ],
   theme: {
     extend: {
       colors: {
         letters: "#C7C7C7",
         green: "#ACD9B2",
-        background: "",
+        background: "#F7F7F7",
       },
       fontFamily: {
         quicksand: ["Quicksand", "sans-serif"],
+      },
+      height: {
+        100: "100vh",
       },
     },
     fontWeight: {

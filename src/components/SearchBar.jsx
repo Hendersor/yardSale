@@ -2,7 +2,7 @@ import React from "react";
 
 const SearchBar = () => {
   return (
-    <div className="w-full h-36 px-2 flex flex-col justify-between font-['Quicksand']">
+    <div className="w-full h-28 px-2 flex flex-col justify-between font-['Quicksand']">
       <div className="flex justify-start items-center h-10 rounded-lg bg-slate-100">
         <img
           className="mx-2"
@@ -16,10 +16,10 @@ const SearchBar = () => {
         />
       </div>
 
-      <ul className="flex flex-wrap justify-evenly items-center h-20 text-[#C7C7C7]">
-        <li className="hover:text-[#ACD9B2] cursor-pointer">Electronics</li>
-        <li className="hover:text-[#ACD9B2] cursor-pointer">Jewelery</li>
-        <li className="hover:text-[#ACD9B2] cursor-pointer">Men's Clothing</li>
+      <ul className="flex  items-center h-14 w-full overflow-auto text-[#C7C7C7] gap-x-4">
+        <li className="hover:text-[#ACD9B2] cursor-pointer ">Electronics</li>
+        <li className="hover:text-[#ACD9B2] cursor-pointer ">Jewelery</li>
+        <li className="hover:text-[#ACD9B2] cursor-pointer ">Men's Clothing</li>
         <li className="hover:text-[#ACD9B2] cursor-pointer">
           Women's Clothing
         </li>
