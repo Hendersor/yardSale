@@ -1,12 +1,12 @@
 import React from "react";
-import { FilterNav } from "../components/FilterNav";
+import { NavBar } from "../components/NavBar";
 import { SearchBar } from "../components/SearchBar";
 import { Products } from "../components/Products";
 
 const Home = () => {
   return (
     <div>
-      <FilterNav />
+      <NavBar />
       <SearchBar />
       <Products />
     </div>
