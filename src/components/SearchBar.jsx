@@ -25,7 +25,7 @@ const SearchBar = () => {
           Women's Clothing
         </li>
       </ul>
-      <Description />
+      {/* <Description /> */}
     </div>
   );
 };

@@ -1,14 +1,11 @@
 import React from "react";
+import { AiOutlineHeart } from "react-icons/ai";
 
 const NavBar = () => {
   return (
-    <nav className="w-full h-14 flex justify-between px-2 md:w-11/12 md:my-0 md:mx-auto lg:relative">
+    <nav className="w-full h-14 relative flex justify-between px-2 md:w-11/12 md:my-0 md:mx-auto lg:relative">
       <figure className="h-full w-10  flex justify-center items-center lg:hidden">
-        <img
-          className="cursor-pointer"
-          src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1685834726/Shape_l1tnzh.png"
-          alt="barIcon"
-        />
+        <AiOutlineHeart className="text-2xl" />
       </figure>
 
       <figure className="h-full w-28  flex justify-center items-center">
@@ -28,7 +25,9 @@ const NavBar = () => {
         </li>
       </ul>
 
-      <figure className="h-full w-10  flex justify-center items-center ">
+      <figure className="h-full w-16  flex justify-center  lg:justify-between items-center ">
+        <AiOutlineHeart className="hidden lg:flex text-2xl cursor-pointer" />
+
         <img
           className="cursor-pointer"
           src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1685834726/ShapeCart_jcz83w.png"

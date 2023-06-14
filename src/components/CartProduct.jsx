@@ -2,7 +2,7 @@ import React from "react";
 
 const CartProduct = () => {
   return (
-    <div className="h-24 w-11/12 flex my-2">
+    <div className="h-24 w-9/12 max-w-3xl flex justify-evenly my-2 bg-[#F7F7F7] rounded-lg">
       <figure className="h-22 w-16 ">
         <img
           className="w-full h-full"
