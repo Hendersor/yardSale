@@ -1,14 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate, useLocation } from "react-router";
 import { AiOutlineHeart } from "react-icons/ai";
 
 const NavBar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [activeLink, setActiveLink] = useState(location.pathname);
+
+  const handleNavigate = (path) => {
+    navigate(path);
+    setActiveLink(path);
+  };
+
   return (
     <nav className="w-full h-14 relative flex justify-between px-2 md:w-11/12 md:my-0 md:mx-auto lg:relative">
       <figure className="h-full w-10  flex justify-center items-center lg:hidden">
-        <AiOutlineHeart className="text-2xl" />
+        <AiOutlineHeart
+          className="text-2xl"
+          onClick={() => handleNavigate("/wish")}
+        />
       </figure>
 
-      <figure className="h-full w-28  flex justify-center items-center">
+      <figure
+        className="h-full w-28  flex justify-center items-center"
+        onClick={() => handleNavigate("/")}
+      >
         <img
           className="cursor-pointer object-contain"
           src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1685834733/logo_yard_sale_nxb2do.png"
@@ -26,9 +42,13 @@ const NavBar = () => {
       </ul>
 
       <figure className="h-full w-16  flex justify-center  lg:justify-between items-center ">
-        <AiOutlineHeart className="hidden lg:flex text-2xl cursor-pointer" />
+        <AiOutlineHeart
+          className="hidden lg:flex text-2xl cursor-pointer"
+          onClick={() => handleNavigate("/wish")}
+        />
 
         <img
+          onClick={() => handleNavigate("/cart")}
           className="cursor-pointer"
           src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1685834726/ShapeCart_jcz83w.png"
           alt="cartIcon"
