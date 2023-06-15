@@ -1,7 +1,14 @@
 import React from "react";
 import { RxCross2 } from "react-icons/rx";
 
-const Description = ({ description, setDescription }) => {
+const Description = ({
+  description,
+  setDescription,
+  image,
+  price,
+  ProductDescription,
+  name,
+}) => {
   const handleDescription = () => {
     setDescription(!description);
   };
@@ -11,7 +18,7 @@ const Description = ({ description, setDescription }) => {
       <figure className="w-full h-1/2 relative">
         <img
           className="w-full h-full object-contain"
-          src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+          src={image}
           alt="product image"
         />
 
@@ -22,15 +29,13 @@ const Description = ({ description, setDescription }) => {
 
       <div className="w-full h-1/2 flex flex-col justify-evenly items-center text-gray-500">
         <p className="self-start px-4">
-          <span className="font-[500] text-black">$120,00</span>
+          <span className="font-[500] text-black">{`$${price}`}</span>
           <br />
-          Retro refrigerator
+          {name}
         </p>
 
-        <p className="px-4 text-sm">
-          With this functional and practical interior, this refrigerator also
-          fulfills a decorative function, adding personality and a retro-vintage
-          aesthetic to your kitchen or workplace
+        <p className="px-4 text-sm overflow-hidden line-clamp-2">
+          {ProductDescription}
         </p>
 
         <button className="bg-[#ACD9B2] w-11/12 h-12 rounded-lg text-white cursor-pointer">
