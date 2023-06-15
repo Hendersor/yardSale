@@ -1,7 +1,11 @@
 import React from "react";
 import { RxCross2 } from "react-icons/rx";
 
-const Description = () => {
+const Description = ({ description, setDescription }) => {
+  const handleDescription = () => {
+    setDescription(!description);
+  };
+
   return (
     <div className="absolute top-0 left-0 w-full h-screen bg-white max-w-xs md:right-0 md:h-[500px] lg:h-[520px]">
       <figure className="w-full h-1/2 relative">
@@ -11,8 +15,8 @@ const Description = () => {
           alt="product image"
         />
 
-        <div className="hidden absolute w-10 h-10 rounded-full bg-slate-100 md:flex justify-center items-center cursor-pointer top-2 left-2">
-          <RxCross2 />
+        <div className="absolute w-10 h-10 rounded-full bg-slate-100 md:flex justify-center items-center cursor-pointer top-2 left-2">
+          <RxCross2 onClick={() => handleDescription()} />
         </div>
       </figure>
 
