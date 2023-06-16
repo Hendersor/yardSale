@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate, useLocation } from "react-router";
+import { ProductsContext } from "../context";
 import { AiOutlineHeart } from "react-icons/ai";
 
 const NavBar = () => {
@@ -10,6 +11,18 @@ const NavBar = () => {
   const handleNavigate = (path) => {
     navigate(path);
     setActiveLink(path);
+  };
+
+  const { productData } = useContext(ProductsContext);
+  const { setFilteredData } = useContext(ProductsContext);
+
+  const handleFilter = (e) => {
+    const category = e.target.textContent.toLowerCase();
+    const filteredData = productData.filter((p) => p.category === category);
+    if (filteredData.length === 0) {
+      setFilteredData([]);
+    }
+    setFilteredData(filteredData);
   };
 
   return (
@@ -32,11 +45,36 @@ const NavBar = () => {
         />
       </figure>
 
-      <ul className="hidden md:hidden lg:flex  items-center h-14 w-full overflow-auto text-[#C7C7C7] gap-x-4 md:justify-center md:w-2/3 lg:absolute lg:left-10">
-        <li className="hover:text-[#ACD9B2] cursor-pointer">Electronics</li>
-        <li className="hover:text-[#ACD9B2] cursor-pointer">Jewelery</li>
-        <li className="hover:text-[#ACD9B2] cursor-pointer">Men's Clothing</li>
-        <li className="hover:text-[#ACD9B2] cursor-pointer">
+      <ul className="hidden md:hidden lg:flex  items-center h-14 w-full overflow-auto text-[#C7C7C7] gap-x-4 mx-4 md:justify-center md:w-2/3 lg:absolute lg:left-10">
+        <li
+          className="hover:text-[#ACD9B2] cursor-pointer"
+          onClick={handleFilter}
+        >
+          All
+        </li>
+
+        <li
+          className="hover:text-[#ACD9B2] cursor-pointer"
+          onClick={handleFilter}
+        >
+          Electronics
+        </li>
+        <li
+          className="hover:text-[#ACD9B2] cursor-pointer"
+          onClick={handleFilter}
+        >
+          Jewelery
+        </li>
+        <li
+          className="hover:text-[#ACD9B2] cursor-pointer"
+          onClick={handleFilter}
+        >
+          Men's Clothing
+        </li>
+        <li
+          className="hover:text-[#ACD9B2] cursor-pointer"
+          onClick={handleFilter}
+        >
           Women's Clothing
         </li>
       </ul>

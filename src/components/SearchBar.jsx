@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ProductsContext } from "../context";
 import { Description } from "./Description";
 
 const SearchBar = ({ description, setDescription }) => {
   const { product, productData } = useContext(ProductsContext);
-  const { setFilteredData } = useContext(ProductsContext);
+  const { filteredData, setFilteredData } = useContext(ProductsContext);
 
   const handleFilter = (e) => {
     const category = e.target.textContent.toLowerCase();
@@ -13,6 +13,16 @@ const SearchBar = ({ description, setDescription }) => {
       setFilteredData([]);
     }
     setFilteredData(filteredData);
+  };
+
+  const [searchValue, setSearchValue] = useState("");
+  const handleInput = (e) => {
+    const userSearch = e.target.value.toLowerCase();
+    setSearchValue(userSearch);
+    const filteredData2 = productData.filter((p) => {
+      return p.title.toLowerCase().includes(searchValue);
+    });
+    setFilteredData(filteredData2);
   };
 
   return (
@@ -24,6 +34,7 @@ const SearchBar = ({ description, setDescription }) => {
           alt=""
         />
         <input
+          onChange={handleInput}
           type="text"
           placeholder="Search product"
           className="w-full h-full bg-slate-100 rounded-lg"
