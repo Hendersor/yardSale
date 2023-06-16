@@ -4,7 +4,7 @@ import { Description } from "./Description";
 
 const SearchBar = ({ description, setDescription }) => {
   const { product, productData } = useContext(ProductsContext);
-  const { filteredData, setFilteredData } = useContext(ProductsContext);
+  const { setFilteredData } = useContext(ProductsContext);
 
   const handleFilter = (e) => {
     const category = e.target.textContent.toLowerCase();

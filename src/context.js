@@ -6,6 +6,7 @@ const ProductsProvider = ({ children }) => {
   const [productData, setProductData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [product, setProduct] = useState([]);
+  const [cart, setCart] = useState([]);
 
   return (
     <ProductsContext.Provider
@@ -16,6 +17,8 @@ const ProductsProvider = ({ children }) => {
         setProduct,
         filteredData,
         setFilteredData,
+        cart,
+        setCart,
       }}
     >
       {children}
