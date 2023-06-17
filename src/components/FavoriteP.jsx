@@ -1,18 +1,15 @@
 import React from "react";
 
-const FavoriteP = () => {
+const FavoriteP = ({ image, name, price, removeItem }) => {
   return (
     <div className="h-24 w-11/12 max-w-sm flex justify-between bg-[#F7F7F7] rounded-lg px-2 mb-2.5">
       <figure className="h-full w-16">
-        <img
-          src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-          alt="image product"
-        />
+        <img src={image} alt="image product" />
       </figure>
 
       <div className="flex flex-col items-start justify-center justify-self-start">
-        <h3>Round shelf</h3>
-        <h3>$120,00</h3>
+        <h3>{name}</h3>
+        <h3>{`$${price}`}</h3>
       </div>
       <div className="flex items-center justify-between w-16">
         <img
@@ -21,6 +18,7 @@ const FavoriteP = () => {
           alt="cart Icon"
         />
         <img
+          onClick={removeItem}
           className="w-3 h-3 cursor-pointer"
           src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1686019243/Shape_xtog4c.png"
           alt="cross icon"

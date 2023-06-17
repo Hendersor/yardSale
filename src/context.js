@@ -7,6 +7,7 @@ const ProductsProvider = ({ children }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [product, setProduct] = useState([]);
   const [cart, setCart] = useState([]);
+  const [wish, setWish] = useState([]);
 
   return (
     <ProductsContext.Provider
@@ -19,6 +20,8 @@ const ProductsProvider = ({ children }) => {
         setFilteredData,
         cart,
         setCart,
+        wish,
+        setWish,
       }}
     >
       {children}

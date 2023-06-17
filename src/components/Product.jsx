@@ -12,11 +12,17 @@ const Product = ({ setDescription, description, title, id, image, price }) => {
   };
 
   const { cart, setCart } = useContext(ProductsContext);
-
   const handleCart = (id) => {
     const product = addTo(productData, id);
     const newProducts = [...cart, product[0]];
     setCart(newProducts);
+  };
+
+  const { wish, setWish } = useContext(ProductsContext);
+  const handleWish = (id) => {
+    const product = addTo(productData, id);
+    const newProducts = [...wish, product[0]];
+    setWish(newProducts);
   };
 
   return (
@@ -27,7 +33,7 @@ const Product = ({ setDescription, description, title, id, image, price }) => {
           className="object-contain cursor-pointer w-full h-full"
           onClick={() => handleDescription(id)}
           src={image}
-          alt=""
+          alt="product Image"
         />
       </figure>
       <div className="flex flex-col h-1/2 justify-between ">
@@ -40,7 +46,10 @@ const Product = ({ setDescription, description, title, id, image, price }) => {
             alt="buyIcon"
           />
 
-          <AiOutlineHeart className="text-xl cursor-pointer" />
+          <AiOutlineHeart
+            className="text-xl cursor-pointer"
+            onClick={() => handleWish(id)}
+          />
         </figure>
         <div className="h-1/2 w-full flex items-center justify-center md:flex md:justify-between md:items-center">
           <p className="text-sm overflow-hidden line-clamp-2">{title}</p>
