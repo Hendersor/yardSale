@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { addTo, handleTotal } from "../addTo";
 import { ProductsContext } from "../context";
 import { AiOutlineHeart } from "react-icons/ai";
@@ -31,8 +31,23 @@ const Product = ({ setDescription, description, title, id, image, price }) => {
     setWish(newProducts);
   };
   const { setNewWishNot } = useContext(ProductsContext);
+  const { setNewProductNot } = useContext(ProductsContext);
+
+  const [animation, setAnimation] = useState(false);
+
+  const handleAnimation = () => {
+    setAnimation(true);
+    setTimeout(() => {
+      setAnimation(false);
+    }, 350);
+  };
+
   return (
-    <div className="w-32 h-44  flex flex-col justify-between border-solid border-2 border-[#C7C7C7] rounded-lg px-2 md:w-36">
+    <div
+      className={`w-32 h-44 flex flex-col justify-between border-solid border-2 border-[#C7C7C7] rounded-lg px-2 md:w-36 transition-transform duration-100 ${
+        animation ? "transform scale-110" : ""
+      }`}
+    >
       <figure className="h-1/2 w-full cursor-pointer">
         <img
           id={id}
@@ -46,7 +61,11 @@ const Product = ({ setDescription, description, title, id, image, price }) => {
         <figure className="flex justify-between items-center w-full h-1/2 px-2">
           <img
             id={id}
-            onClick={() => handleCart(id)}
+            onClick={() => {
+              handleCart(id);
+              setNewProductNot(true);
+              handleAnimation();
+            }}
             className="cursor-pointer w-10"
             src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1685915411/bt_add_to_cart_snin80.png"
             alt="buyIcon"
@@ -57,6 +76,7 @@ const Product = ({ setDescription, description, title, id, image, price }) => {
             onClick={() => {
               handleWish(id);
               setNewWishNot(true);
+              handleAnimation();
             }}
           />
         </figure>

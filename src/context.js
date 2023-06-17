@@ -10,6 +10,7 @@ const ProductsProvider = ({ children }) => {
   const [wish, setWish] = useState([]);
   const [total, setTotal] = useState(0);
   const [newWishNot, setNewWishNot] = useState(false);
+  const [newProductNot, setNewProductNot] = useState(false);
 
   return (
     <ProductsContext.Provider
@@ -28,6 +29,8 @@ const ProductsProvider = ({ children }) => {
         setTotal,
         newWishNot,
         setNewWishNot,
+        newProductNot,
+        setNewProductNot,
       }}
     >
       {children}

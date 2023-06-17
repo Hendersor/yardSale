@@ -26,6 +26,7 @@ const NavBar = () => {
   };
 
   const { setNewWishNot, newWishNot } = useContext(ProductsContext);
+  const { newProductNot, setNewProductNot } = useContext(ProductsContext);
 
   return (
     <nav className="w-full h-14 relative flex items-center justify-between px-2 md:w-11/12 md:my-0 md:mx-auto lg:relative">
@@ -87,18 +88,30 @@ const NavBar = () => {
         </li>
       </ul>
 
-      <figure className="h-full w-16  flex justify-center  lg:justify-between items-center ">
+      <figure className="h-1/2 w-auto relative flex justify-center  lg:justify-between lg:w-16 items-center">
         <AiOutlineHeart
           className="hidden lg:flex text-2xl cursor-pointer"
-          onClick={() => handleNavigate("/wish")}
+          onClick={() => {
+            handleNavigate("/wish");
+            setNewWishNot(false);
+          }}
         />
+        {newWishNot && (
+          <div className="hidden lg:flex w-2 h-2 rounded-full bg-red-600 absolute top-0 left-0" />
+        )}
 
         <img
-          onClick={() => handleNavigate("/cart")}
+          onClick={() => {
+            handleNavigate("/cart");
+            setNewProductNot(false);
+          }}
           className="cursor-pointer"
           src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1685834726/ShapeCart_jcz83w.png"
           alt="cartIcon"
         />
+        {newProductNot && (
+          <div className="w-2 h-2 rounded-full bg-[#ACD9B2] absolute top-0 right-0 " />
+        )}
       </figure>
     </nav>
   );
