@@ -54,39 +54,43 @@ const NavBar = () => {
         />
       </figure>
 
-      <ul className="hidden md:hidden lg:flex  items-center h-14 w-full overflow-auto text-[#C7C7C7] gap-x-4 mx-4 md:justify-center md:w-2/3 lg:absolute lg:left-10">
-        <li
-          className="hover:text-[#ACD9B2] cursor-pointer"
-          onClick={handleFilter}
-        >
-          All
-        </li>
+      {activeLink !== "/wish" && activeLink !== "/cart" ? (
+        <ul className="hidden md:hidden lg:flex  items-center h-14 w-full overflow-auto text-[#C7C7C7] gap-x-4 mx-4 md:justify-center md:w-2/3 lg:absolute lg:left-10">
+          <li
+            className="hover:text-[#ACD9B2] cursor-pointer"
+            onClick={handleFilter}
+          >
+            All
+          </li>
 
-        <li
-          className="hover:text-[#ACD9B2] cursor-pointer"
-          onClick={handleFilter}
-        >
-          Electronics
-        </li>
-        <li
-          className="hover:text-[#ACD9B2] cursor-pointer"
-          onClick={handleFilter}
-        >
-          Jewelery
-        </li>
-        <li
-          className="hover:text-[#ACD9B2] cursor-pointer"
-          onClick={handleFilter}
-        >
-          Men's Clothing
-        </li>
-        <li
-          className="hover:text-[#ACD9B2] cursor-pointer"
-          onClick={handleFilter}
-        >
-          Women's Clothing
-        </li>
-      </ul>
+          <li
+            className="hover:text-[#ACD9B2] cursor-pointer"
+            onClick={handleFilter}
+          >
+            Electronics
+          </li>
+          <li
+            className="hover:text-[#ACD9B2] cursor-pointer"
+            onClick={handleFilter}
+          >
+            Jewelery
+          </li>
+          <li
+            className="hover:text-[#ACD9B2] cursor-pointer"
+            onClick={handleFilter}
+          >
+            Men's Clothing
+          </li>
+          <li
+            className="hover:text-[#ACD9B2] cursor-pointer"
+            onClick={handleFilter}
+          >
+            Women's Clothing
+          </li>
+        </ul>
+      ) : (
+        ""
+      )}
 
       <figure className="h-1/2 w-auto relative flex justify-center  lg:justify-between lg:w-16 items-center">
         <AiOutlineHeart
