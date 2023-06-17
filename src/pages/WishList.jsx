@@ -2,10 +2,20 @@ import React, { useContext } from "react";
 import { FavoriteP } from "../components/FavoriteP";
 import { NavBar } from "../components/NavBar";
 import { ProductsContext } from "../context";
+import { addTo } from "../addTo";
 import "../styles/tailwind.css";
 
 const WishList = () => {
   const { wish, setWish } = useContext(ProductsContext);
+  const { cart, setCart } = useContext(ProductsContext);
+  const { productData } = useContext(ProductsContext);
+
+  const handleCart = (id) => {
+    const product = addTo(productData, id);
+    const newProducts = [...cart, product[0]];
+    setCart(newProducts);
+  };
+
   const removeItem = (id) => {
     const productIndex = wish.findIndex((p) => p.id === id);
     const newWish = [...wish];
@@ -26,6 +36,8 @@ const WishList = () => {
                 price={p.price}
                 key={p.id}
                 removeItem={removeItem}
+                handleCart={handleCart}
+                id={p.id}
               />
             ))
           : ""}

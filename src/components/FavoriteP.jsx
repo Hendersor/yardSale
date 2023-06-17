@@ -1,6 +1,6 @@
 import React from "react";
 
-const FavoriteP = ({ image, name, price, removeItem }) => {
+const FavoriteP = ({ image, name, price, removeItem, id, handleCart }) => {
   return (
     <div className="h-24 w-11/12 max-w-sm flex justify-between bg-[#F7F7F7] rounded-lg px-2 mb-2.5">
       <figure className="h-full w-16">
@@ -13,6 +13,7 @@ const FavoriteP = ({ image, name, price, removeItem }) => {
       </div>
       <div className="flex items-center justify-between w-16">
         <img
+          onClick={() => handleCart(id)}
           className="w-10 h-10 cursor-pointer"
           src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1685915411/bt_add_to_cart_snin80.png"
           alt="cart Icon"
