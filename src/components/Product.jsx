@@ -30,7 +30,7 @@ const Product = ({ setDescription, description, title, id, image, price }) => {
     const newProducts = [...wish, product[0]];
     setWish(newProducts);
   };
-
+  const { setNewWishNot } = useContext(ProductsContext);
   return (
     <div className="w-32 h-44  flex flex-col justify-between border-solid border-2 border-[#C7C7C7] rounded-lg px-2 md:w-36">
       <figure className="h-1/2 w-full cursor-pointer">
@@ -54,7 +54,10 @@ const Product = ({ setDescription, description, title, id, image, price }) => {
 
           <AiOutlineHeart
             className="text-xl cursor-pointer"
-            onClick={() => handleWish(id)}
+            onClick={() => {
+              handleWish(id);
+              setNewWishNot(true);
+            }}
           />
         </figure>
         <div className="h-1/2 w-full flex items-center justify-center md:flex md:justify-between md:items-center">

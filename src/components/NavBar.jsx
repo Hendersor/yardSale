@@ -25,13 +25,21 @@ const NavBar = () => {
     setFilteredData(filteredData);
   };
 
+  const { setNewWishNot, newWishNot } = useContext(ProductsContext);
+
   return (
-    <nav className="w-full h-14 relative flex justify-between px-2 md:w-11/12 md:my-0 md:mx-auto lg:relative">
-      <figure className="h-full w-10  flex justify-center items-center lg:hidden">
+    <nav className="w-full h-14 relative flex items-center justify-between px-2 md:w-11/12 md:my-0 md:mx-auto lg:relative">
+      <figure className="h-1/2 w-10 relative flex justify-center items-center lg:hidden">
         <AiOutlineHeart
           className="text-2xl"
-          onClick={() => handleNavigate("/wish")}
+          onClick={() => {
+            handleNavigate("/wish");
+            setNewWishNot(false);
+          }}
         />
+        {newWishNot && (
+          <div className="w-2 h-2 rounded-full bg-red-600 absolute top-0 right-1" />
+        )}
       </figure>
 
       <figure
