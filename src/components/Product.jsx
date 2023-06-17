@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { addTo } from "../addTo";
+import React, { useContext, useState, useEffect } from "react";
+import { addTo, handleCheckout } from "../addTo";
 import { ProductsContext } from "../context";
 import { AiOutlineHeart } from "react-icons/ai";
 
@@ -12,6 +12,12 @@ const Product = ({ setDescription, description, title, id, image, price }) => {
   };
 
   const { cart, setCart } = useContext(ProductsContext);
+  const { setTotal } = useContext(ProductsContext);
+
+  useEffect(() => {
+    handleCheckout(cart, setTotal);
+  }, [cart]);
+
   const handleCart = (id) => {
     const product = addTo(productData, id);
     const newProducts = [...cart, product[0]];
