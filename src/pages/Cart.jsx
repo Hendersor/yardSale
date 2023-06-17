@@ -1,17 +1,16 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavBar } from "../components/NavBar";
 import { ProductsContext } from "../context";
 import "../styles/tailwind.css";
 import { CartProduct } from "../components/CartProduct";
-import { Product } from "../components/Product";
-import { handleCheckout } from "../addTo";
+import { handleTotal } from "../addTo";
 
 const Cart = () => {
   const { cart, setCart } = useContext(ProductsContext);
   const { total, setTotal } = useContext(ProductsContext);
 
   useEffect(() => {
-    handleCheckout(cart, setTotal);
+    handleTotal(cart, setTotal);
   }, [cart]);
 
   const removeItem = (id) => {
@@ -19,6 +18,13 @@ const Cart = () => {
     const newCart = [...cart];
     newCart.splice(productIndex, 1);
     setCart(newCart);
+  };
+
+  const [svgCompletedVisible, setSvgCompletedVisible] = useState(false);
+  const [svgEmpty, setSvgEmpty] = useState(true);
+  const handleCheckoutButton = () => {
+    setCart([]);
+    setSvgCompletedVisible(!svgCompletedVisible);
   };
   return (
     <div className="w-full h-screen flex flex-col items-center relative">
@@ -38,6 +44,23 @@ const Cart = () => {
               />
             ))
           : ""}
+        {svgCompletedVisible && (
+          <img
+            className="w-40 lg:w-52"
+            src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1687023320/completed_ktmuoz.svg"
+            alt="completedIcon"
+          />
+        )}
+
+        {cart.length === 0 && svgCompletedVisible !== true ? (
+          <img
+            className="w-40 lg:w-52"
+            src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1687031140/undraw_empty_cart_co35_1_xq4jac.svg"
+            alt="empty cart icon"
+          />
+        ) : (
+          ""
+        )}
       </div>
 
       <div className=" h-40 w-full flex flex-col  justify-between px-2 py-2 absolute bottom-0 md:items-center">
@@ -51,9 +74,10 @@ const Cart = () => {
         </div>
         <button
           className={`text-white bg-[#ACD9B2] h-12 rounded-lg cursor-pointer md:w-1/2 lg:w-2/5 ${
-            total === 0 ? "disabled:opacity-50" : ""
+            total === 0 ? "hidden" : ""
           }`}
           disabled={total === 0}
+          onClick={() => handleCheckoutButton()}
         >
           Checkout
         </button>
@@ -61,5 +85,7 @@ const Cart = () => {
     </div>
   );
 };
+
+// disabled:opacity-50
 
 export { Cart };

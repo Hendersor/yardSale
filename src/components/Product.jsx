@@ -1,10 +1,10 @@
-import React, { useContext, useState, useEffect } from "react";
-import { addTo, handleCheckout } from "../addTo";
+import React, { useContext, useEffect } from "react";
+import { addTo, handleTotal } from "../addTo";
 import { ProductsContext } from "../context";
 import { AiOutlineHeart } from "react-icons/ai";
 
 const Product = ({ setDescription, description, title, id, image, price }) => {
-  const { setProduct, productData, product } = useContext(ProductsContext);
+  const { setProduct, productData } = useContext(ProductsContext);
   const handleDescription = () => {
     const selectedProduct = productData.filter((p) => p.id === id);
     setProduct(selectedProduct[0]);
@@ -15,7 +15,7 @@ const Product = ({ setDescription, description, title, id, image, price }) => {
   const { setTotal } = useContext(ProductsContext);
 
   useEffect(() => {
-    handleCheckout(cart, setTotal);
+    handleTotal(cart, setTotal);
   }, [cart]);
 
   const handleCart = (id) => {
