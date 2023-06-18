@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { NavBar } from "../components/NavBar";
 import { ProductsContext } from "../context";
 import "../styles/tailwind.css";
@@ -6,10 +6,9 @@ import { CartProduct } from "../components/CartProduct";
 
 const Cart = () => {
   const { cart, setCart } = useContext(ProductsContext);
-  const { total, setTotal } = useContext(ProductsContext);
+  const { total } = useContext(ProductsContext);
 
   const [svgCompletedVisible, setSvgCompletedVisible] = useState(false);
-  const [svgEmpty, setSvgEmpty] = useState(true);
   const handleCheckoutButton = () => {
     setCart([]);
     setSvgCompletedVisible(!svgCompletedVisible);

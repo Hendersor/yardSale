@@ -22,7 +22,6 @@ const Products = ({ setDescription, description }) => {
         ? productData.map((p) => (
             <Product
               setDescription={setDescription}
-              description={description}
               title={p.title}
               category={p.category}
               key={p.id}

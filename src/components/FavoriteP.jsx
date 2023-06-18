@@ -1,8 +1,14 @@
 import React, { useContext } from "react";
 import { ProductsContext } from "../context";
+import { removeItemFromList } from "../addTo";
 
-const FavoriteP = ({ image, name, price, removeItem, id, handleCart }) => {
+const FavoriteP = ({ image, name, price, id, handleCart }) => {
   const { setNewProductNot } = useContext(ProductsContext);
+  const { wish, setWish } = useContext(ProductsContext);
+
+  const handleRemove = () => {
+    removeItemFromList(id, wish, setWish);
+  };
   return (
     <div className="h-24 w-11/12 max-w-sm flex justify-between bg-[#F7F7F7] rounded-lg px-2 mb-2.5 ">
       <figure className="h-full w-16 flex items-center justify-center ">
@@ -28,7 +34,7 @@ const FavoriteP = ({ image, name, price, removeItem, id, handleCart }) => {
           alt="cart Icon"
         />
         <img
-          onClick={removeItem}
+          onClick={handleRemove}
           className="w-3 h-3 cursor-pointer"
           src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1686019243/Shape_xtog4c.png"
           alt="cross icon"

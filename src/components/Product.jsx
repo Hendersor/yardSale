@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { addTo, handleTotal } from "../addTo";
+import { handleTotal, addToList } from "../addTo";
 import { ProductsContext } from "../context";
 import { AiOutlineHeart } from "react-icons/ai";
 
-const Product = ({ setDescription, description, title, id, image, price }) => {
+const Product = ({ setDescription, title, id, image, price }) => {
   const { setProduct, productData } = useContext(ProductsContext);
 
   const handleDescription = () => {
@@ -18,30 +18,16 @@ const Product = ({ setDescription, description, title, id, image, price }) => {
 
   useEffect(() => {
     handleTotal(cart, setTotal);
-    console.log(description);
   }, [cart]);
 
   const handleCart = (id) => {
-    const product = addTo(productData, id);
-    const isProductInTheCart = cart.some((p) => p.id === product[0].id);
-
-    if (!isProductInTheCart) {
-      const newProducts = [...cart, product[0]];
-      setCart(newProducts);
-    }
+    addToList(id, setCart, cart, productData);
   };
 
   const { wish, setWish } = useContext(ProductsContext);
   const handleWish = (id) => {
-    const product = addTo(productData, id);
-    const isProductInTheWishList = wish.some((p) => p.id === product[0].id);
-    if (!isProductInTheWishList) {
-      const newProducts = [...wish, product[0]];
-      setWish(newProducts);
-    }
+    addToList(id, setWish, wish, productData);
   };
-  const { setNewWishNot } = useContext(ProductsContext);
-  const { setNewProductNot } = useContext(ProductsContext);
 
   const [animation, setAnimation] = useState(false);
 
@@ -52,6 +38,8 @@ const Product = ({ setDescription, description, title, id, image, price }) => {
     }, 350);
   };
 
+  const { setNewWishNot } = useContext(ProductsContext);
+  const { setNewProductNot } = useContext(ProductsContext);
   return (
     <div
       className={`w-32 h-44 flex flex-col justify-between border-solid border-2 border-[#C7C7C7] rounded-lg px-2 md:w-36 transition-transform duration-100 ${

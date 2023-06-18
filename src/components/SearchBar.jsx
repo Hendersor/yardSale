@@ -15,12 +15,10 @@ const SearchBar = ({ description, setDescription }) => {
     setFilteredData(filteredData);
   };
 
-  const [searchValue, setSearchValue] = useState("");
   const handleInput = (e) => {
     const userSearch = e.target.value.toLowerCase();
-    setSearchValue(userSearch);
     const filteredData2 = productData.filter((p) => {
-      return p.title.toLowerCase().includes(searchValue);
+      return p.title.toLowerCase().includes(userSearch);
     });
     setFilteredData(filteredData2);
   };

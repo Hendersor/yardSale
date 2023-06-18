@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { addTo } from "../addTo";
+import { addToList } from "../addTo";
 import { ProductsContext } from "../context";
 import { RxCross2 } from "react-icons/rx";
 
@@ -21,13 +21,7 @@ const Description = ({
   const { setNewProductNot } = useContext(ProductsContext);
 
   const handleCart = (id) => {
-    const product = addTo(productData, id);
-    const isProductInTheCart = cart.some((p) => p.id === product[0].id);
-
-    if (!isProductInTheCart) {
-      const newProducts = [...cart, product[0]];
-      setCart(newProducts);
-    }
+    addToList(id, setCart, cart, productData);
   };
 
   return (
@@ -39,11 +33,8 @@ const Description = ({
           alt="product image"
         />
 
-        <div className="absolute w-10 h-10 rounded-full bg-slate-100 md:flex justify-center items-center cursor-pointer top-2 left-2">
-          <RxCross2
-            className="relative top-3 left-3"
-            onClick={() => handleDescription()}
-          />
+        <div className="flex absolute w-10 h-10 rounded-full bg-slate-100  justify-center items-center cursor-pointer top-2 left-2">
+          <RxCross2 className="" onClick={() => handleDescription()} />
         </div>
       </figure>
 

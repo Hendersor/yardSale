@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { handleTotal } from "../addTo";
+import { handleTotal, removeItemFromList } from "../addTo";
 import { ProductsContext } from "../context";
 
 const CartProduct = ({ name, price, img, id }) => {
@@ -10,10 +10,7 @@ const CartProduct = ({ name, price, img, id }) => {
   }, [cart]);
 
   const removeItem = () => {
-    const productIndex = cart.findIndex((p) => p.id === id);
-    const newCart = [...cart];
-    newCart.splice(productIndex, 1);
-    setCart(newCart);
+    removeItemFromList(id, cart, setCart);
   };
 
   return (
