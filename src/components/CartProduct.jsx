@@ -34,7 +34,6 @@ const CartProduct = ({ name, price, img, id }) => {
         <div className="justify-between items-center flex w-28">
           <p className="font-medium text-sm">{`$${price}`}</p>
           <img
-            id={id}
             onClick={() => removeItem()}
             className="cursor-pointer"
             src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1686019243/Shape_xtog4c.png"

@@ -20,10 +20,14 @@ const Description = ({
   const { productData } = useContext(ProductsContext);
   const { setNewProductNot } = useContext(ProductsContext);
 
-  const handleCart = () => {
+  const handleCart = (id) => {
     const product = addTo(productData, id);
-    const newProducts = [...cart, product[0]];
-    setCart(newProducts);
+    const isProductInTheCart = cart.some((p) => p.id === product[0].id);
+
+    if (!isProductInTheCart) {
+      const newProducts = [...cart, product[0]];
+      setCart(newProducts);
+    }
   };
 
   return (
@@ -56,7 +60,7 @@ const Description = ({
 
         <button
           onClick={() => {
-            handleCart();
+            handleCart(id);
             setNewProductNot(true);
           }}
           className="bg-[#ACD9B2] w-11/12 h-12 rounded-lg text-white cursor-pointer"

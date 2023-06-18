@@ -20,15 +20,22 @@ const Product = ({ setDescription, description, title, id, image, price }) => {
 
   const handleCart = (id) => {
     const product = addTo(productData, id);
-    const newProducts = [...cart, product[0]];
-    setCart(newProducts);
+    const isProductInTheCart = cart.some((p) => p.id === product[0].id);
+
+    if (!isProductInTheCart) {
+      const newProducts = [...cart, product[0]];
+      setCart(newProducts);
+    }
   };
 
   const { wish, setWish } = useContext(ProductsContext);
   const handleWish = (id) => {
     const product = addTo(productData, id);
-    const newProducts = [...wish, product[0]];
-    setWish(newProducts);
+    const isProductInTheWishList = wish.some((p) => p.id === product[0].id);
+    if (!isProductInTheWishList) {
+      const newProducts = [...wish, product[0]];
+      setWish(newProducts);
+    }
   };
   const { setNewWishNot } = useContext(ProductsContext);
   const { setNewProductNot } = useContext(ProductsContext);

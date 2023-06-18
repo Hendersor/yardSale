@@ -12,8 +12,12 @@ const WishList = () => {
 
   const handleCart = (id) => {
     const product = addTo(productData, id);
-    const newProducts = [...cart, product[0]];
-    setCart(newProducts);
+    const isProductInTheCart = cart.some((p) => p.id === product[0].id);
+
+    if (!isProductInTheCart) {
+      const newProducts = [...cart, product[0]];
+      setCart(newProducts);
+    }
   };
 
   const removeItem = (id) => {
