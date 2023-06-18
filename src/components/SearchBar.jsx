@@ -81,6 +81,8 @@ const SearchBar = ({ description, setDescription }) => {
           price={product.price}
           ProductDescription={product.description}
           name={product.title}
+          key={product.id}
+          id={product.id}
         />
       )}
     </div>

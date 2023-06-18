@@ -23,7 +23,7 @@ const WishList = () => {
     setWish(newWish);
   };
   return (
-    <div className="w-full h-screen">
+    <div className="w-full h-auto">
       <NavBar />
       <h1 className="font-medium md:text-lg my-2 text-center">Wish List</h1>
 

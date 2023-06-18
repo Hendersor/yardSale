@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
+import { addTo } from "../addTo";
+import { ProductsContext } from "../context";
 import { RxCross2 } from "react-icons/rx";
 
 const Description = ({
@@ -8,9 +10,20 @@ const Description = ({
   price,
   ProductDescription,
   name,
+  id,
 }) => {
   const handleDescription = () => {
     setDescription(!description);
+  };
+
+  const { cart, setCart } = useContext(ProductsContext);
+  const { productData } = useContext(ProductsContext);
+  const { setNewProductNot } = useContext(ProductsContext);
+
+  const handleCart = () => {
+    const product = addTo(productData, id);
+    const newProducts = [...cart, product[0]];
+    setCart(newProducts);
   };
 
   return (
@@ -41,7 +54,13 @@ const Description = ({
           {ProductDescription}
         </p>
 
-        <button className="bg-[#ACD9B2] w-11/12 h-12 rounded-lg text-white cursor-pointer">
+        <button
+          onClick={() => {
+            handleCart();
+            setNewProductNot(true);
+          }}
+          className="bg-[#ACD9B2] w-11/12 h-12 rounded-lg text-white cursor-pointer"
+        >
           Add to cart
         </button>
       </div>
