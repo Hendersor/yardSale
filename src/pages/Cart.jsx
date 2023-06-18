@@ -3,22 +3,10 @@ import { NavBar } from "../components/NavBar";
 import { ProductsContext } from "../context";
 import "../styles/tailwind.css";
 import { CartProduct } from "../components/CartProduct";
-import { handleTotal } from "../addTo";
 
 const Cart = () => {
   const { cart, setCart } = useContext(ProductsContext);
   const { total, setTotal } = useContext(ProductsContext);
-
-  useEffect(() => {
-    handleTotal(cart, setTotal);
-  }, [cart]);
-
-  const removeItem = (id) => {
-    const productIndex = cart.findIndex((p) => p.id === id);
-    const newCart = [...cart];
-    newCart.splice(productIndex, 1);
-    setCart(newCart);
-  };
 
   const [svgCompletedVisible, setSvgCompletedVisible] = useState(false);
   const [svgEmpty, setSvgEmpty] = useState(true);
@@ -40,7 +28,7 @@ const Cart = () => {
                 price={p.price}
                 img={p.image}
                 key={p.id}
-                removeItem={removeItem}
+                id={p.id}
               />
             ))
           : ""}
@@ -62,25 +50,29 @@ const Cart = () => {
           ""
         )}
 
-        <div className=" h-36 w-full flex flex-col  justify-between px-2 py-2  md:items-center">
-          <div
-            className={`w-full h-16 justify-between items-center px-2 font-medium bg-[#F7F7F7] rounded-lg md:w-1/2 lg:w-2/5 ${
-              total !== 0 ? "flex" : "hidden"
-            }`}
-          >
-            <p>Total</p>
-            <p>{`$${total}`}</p>
+        {cart.length !== 0 ? (
+          <div className=" h-36 w-full flex flex-col  justify-between px-2 py-2  md:items-center">
+            <div
+              className={`w-full h-16 justify-between items-center px-2 font-medium bg-[#F7F7F7] rounded-lg md:w-1/2 lg:w-2/5 ${
+                total !== 0 ? "flex" : "hidden"
+              }`}
+            >
+              <p>Total</p>
+              <p>{`$${total}`}</p>
+            </div>
+            <button
+              className={`text-white bg-[#ACD9B2] h-12 rounded-lg cursor-pointer md:w-1/2 lg:w-2/5 ${
+                total === 0 ? "hidden" : ""
+              }`}
+              disabled={total === 0}
+              onClick={() => handleCheckoutButton()}
+            >
+              Checkout
+            </button>
           </div>
-          <button
-            className={`text-white bg-[#ACD9B2] h-12 rounded-lg cursor-pointer md:w-1/2 lg:w-2/5 ${
-              total === 0 ? "hidden" : ""
-            }`}
-            disabled={total === 0}
-            onClick={() => handleCheckoutButton()}
-          >
-            Checkout
-          </button>
-        </div>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
