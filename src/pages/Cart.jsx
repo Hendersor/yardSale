@@ -5,12 +5,12 @@ import "../styles/tailwind.css";
 import { CartProduct } from "../components/CartProduct";
 
 const Cart = () => {
-  const { cart, setCart } = useContext(ProductsContext);
+  const { cartElements, saveCartProduct } = useContext(ProductsContext);
   const { total } = useContext(ProductsContext);
 
   const [svgCompletedVisible, setSvgCompletedVisible] = useState(false);
   const handleCheckoutButton = () => {
-    setCart([]);
+    saveCartProduct([]);
     setSvgCompletedVisible(!svgCompletedVisible);
   };
   return (
@@ -20,8 +20,8 @@ const Cart = () => {
       <h1 className="font-medium md:text-lg my-2">Shopping cart</h1>
 
       <div className="w-full h-auto flex flex-col content-evenly items-center justify-center overflow-auto">
-        {cart.length !== 0
-          ? cart.map((p) => (
+        {cartElements.length !== 0
+          ? cartElements.map((p) => (
               <CartProduct
                 name={p.title}
                 price={p.price}
@@ -39,7 +39,7 @@ const Cart = () => {
           />
         )}
 
-        {cart.length === 0 && svgCompletedVisible !== true ? (
+        {cartElements.length === 0 && svgCompletedVisible !== true ? (
           <img
             className="w-40 lg:w-52"
             src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1687031140/undraw_empty_cart_co35_1_xq4jac.svg"
@@ -49,7 +49,7 @@ const Cart = () => {
           ""
         )}
 
-        {cart.length !== 0 ? (
+        {cartElements.length !== 0 ? (
           <div className=" h-36 w-full flex flex-col  justify-between px-2 py-2  md:items-center">
             <div
               className={`w-full h-16 justify-between items-center px-2 font-medium bg-[#F7F7F7] rounded-lg md:w-1/2 lg:w-2/5 ${

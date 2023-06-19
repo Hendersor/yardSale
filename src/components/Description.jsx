@@ -16,12 +16,12 @@ const Description = ({
     setDescription(!description);
   };
 
-  const { cart, setCart } = useContext(ProductsContext);
+  const { cartElements, saveCartProduct } = useContext(ProductsContext);
   const { productData } = useContext(ProductsContext);
   const { setNewProductNot } = useContext(ProductsContext);
 
   const handleCart = (id) => {
-    addToList(id, setCart, cart, productData);
+    addToList(id, cartElements, productData, saveCartProduct);
   };
 
   return (

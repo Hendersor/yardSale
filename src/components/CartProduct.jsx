@@ -3,14 +3,15 @@ import { handleTotal, removeItemFromList } from "../addTo";
 import { ProductsContext } from "../context";
 
 const CartProduct = ({ name, price, img, id }) => {
-  const { cart, setCart, setTotal } = useContext(ProductsContext);
+  const { cartElements, setTotal, saveCartProduct } =
+    useContext(ProductsContext);
 
   useEffect(() => {
-    handleTotal(cart, setTotal);
-  }, [cart]);
+    handleTotal(cartElements, setTotal);
+  }, [cartElements]);
 
   const removeItem = () => {
-    removeItemFromList(id, cart, setCart);
+    removeItemFromList(id, cartElements, saveCartProduct);
   };
 
   return (

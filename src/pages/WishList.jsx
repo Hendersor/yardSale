@@ -6,12 +6,12 @@ import { addToList } from "../addTo";
 import "../styles/tailwind.css";
 
 const WishList = () => {
-  const { wish } = useContext(ProductsContext);
-  const { cart, setCart } = useContext(ProductsContext);
+  const { wishElements } = useContext(ProductsContext);
+  const { cartElements, saveCartProduct } = useContext(ProductsContext);
   const { productData } = useContext(ProductsContext);
 
   const handleCart = (id) => {
-    addToList(id, setCart, cart, productData);
+    addToList(id, cartElements, productData, saveCartProduct);
   };
 
   return (
@@ -20,8 +20,8 @@ const WishList = () => {
       <h1 className="font-medium md:text-lg my-2 text-center">Wish List</h1>
 
       <div className="w-full h-auto py-2.5 flex flex-col justify-start content-evenly items-center">
-        {wish.length !== 0 ? (
-          wish.map((p) => (
+        {wishElements.length !== 0 ? (
+          wishElements.map((p) => (
             <FavoriteP
               image={p.image}
               name={p.title}

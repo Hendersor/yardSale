@@ -5,6 +5,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 
 const Product = ({ setDescription, title, id, image, price }) => {
   const { setProduct, productData } = useContext(ProductsContext);
+  const { saveCartProduct } = useContext(ProductsContext);
 
   const handleDescription = () => {
     const selectedProduct = productData.filter((p) => p.id === id);
@@ -13,20 +14,21 @@ const Product = ({ setDescription, title, id, image, price }) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const { cart, setCart } = useContext(ProductsContext);
+  const { cartElements } = useContext(ProductsContext);
   const { setTotal } = useContext(ProductsContext);
 
   useEffect(() => {
-    handleTotal(cart, setTotal);
-  }, [cart]);
+    handleTotal(cartElements, setTotal);
+  }, [cartElements]);
 
   const handleCart = (id) => {
-    addToList(id, setCart, cart, productData);
+    addToList(id, cartElements, productData, saveCartProduct);
   };
 
-  const { wish, setWish } = useContext(ProductsContext);
+  const { wishElements } = useContext(ProductsContext);
+  const { saveWishProduct } = useContext(ProductsContext);
   const handleWish = (id) => {
-    addToList(id, setWish, wish, productData);
+    addToList(id, wishElements, productData, saveWishProduct);
   };
 
   const [animation, setAnimation] = useState(false);
