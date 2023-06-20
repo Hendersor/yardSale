@@ -21,7 +21,7 @@ const FavoriteP = ({ image, name, price, id, handleCart }) => {
 
       <div className="w-1/2 h-full flex flex-col items-start justify-center justify-self-start ">
         <h3 className=" line-clamp-1">{name}</h3>
-        <h3>{`$${price}`}</h3>
+        <h3>{`$${price.toFixed(2)}`}</h3>
       </div>
       <div className="w-1/3 h-full flex items-center justify-between">
         <img

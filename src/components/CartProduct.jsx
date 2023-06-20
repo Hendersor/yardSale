@@ -30,7 +30,7 @@ const CartProduct = ({ name, price, img, id }) => {
         </p>
 
         <div className="justify-between items-center flex w-28">
-          <p className="font-medium text-sm">{`$${price}`}</p>
+          <p className="font-medium text-sm">{`$${price.toFixed(2)}`}</p>
           <img
             onClick={() => removeItem()}
             className="cursor-pointer"
