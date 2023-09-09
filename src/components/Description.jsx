@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { addToList } from "../addTo";
 import { ProductsContext } from "../context";
-import { RxCross2 } from "react-icons/rx";
 
 const Description = ({
   description,

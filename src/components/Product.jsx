@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { handleTotal, addToList } from "../addTo";
 import { ProductsContext } from "../context";
-import { AiOutlineHeart } from "react-icons/ai";
 
 const Product = ({ setDescription, title, id, image, price }) => {
   const { setProduct, productData } = useContext(ProductsContext);
@@ -71,8 +70,9 @@ const Product = ({ setDescription, title, id, image, price }) => {
             alt="buyIcon"
           />
 
-          <AiOutlineHeart
-            className="text-xl cursor-pointer"
+          <img
+            src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1694298898/heart_vvlxme.svg"
+            className="w-6 h-6 cursor-pointer"
             onClick={() => {
               handleWish(id);
               setNewWishNot(true);

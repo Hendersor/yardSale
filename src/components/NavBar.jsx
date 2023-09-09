@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useNavigate, useLocation } from "react-router";
 import { ProductsContext } from "../context";
-import { AiOutlineHeart } from "react-icons/ai";
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -31,7 +30,8 @@ const NavBar = () => {
   return (
     <nav className="w-full h-14 relative flex items-center justify-between px-2 md:w-11/12 md:my-0 md:mx-auto lg:relative">
       <figure className="h-1/2 w-10 relative flex justify-center items-center lg:hidden">
-        <AiOutlineHeart
+        <img
+          src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1694298898/heart_vvlxme.svg"
           className="text-2xl"
           onClick={() => {
             handleNavigate("/wish");
@@ -92,9 +92,10 @@ const NavBar = () => {
         ""
       )}
 
-      <figure className="h-1/2 w-auto relative flex justify-center  lg:justify-between lg:w-16 items-center">
-        <AiOutlineHeart
-          className="hidden lg:flex text-2xl cursor-pointer"
+      <figure className="h-1/2 w-16 relative flex justify-between  lg:justify-between  items-center lg:w-28">
+        <img
+          src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1694298898/heart_vvlxme.svg"
+          className="hidden lg:flex w-6 h-6 cursor-pointer"
           onClick={() => {
             handleNavigate("/wish");
             setNewWishNot(false);
@@ -103,6 +104,12 @@ const NavBar = () => {
         {newWishNot && (
           <div className="hidden lg:flex w-2 h-2 rounded-full bg-red-600 absolute top-0 left-0" />
         )}
+
+        <img
+          className="lg:flex w-6 h-6 cursor-pointer"
+          src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1694300241/truck_u7w0vj.svg"
+          alt="orders icon"
+        />
 
         <img
           onClick={() => {
