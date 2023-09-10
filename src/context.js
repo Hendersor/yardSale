@@ -7,6 +7,7 @@ const ProductsProvider = ({ children }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [product, setProduct] = useState([]);
   const [total, setTotal] = useState(0);
+  const [orders, setOrders] = useState([]);
   const [newWishNot, setNewWishNot] = useState(false);
   const [newProductNot, setNewProductNot] = useState(false);
   const [cartElements, saveCartProduct] = useLocalStorage("CART_V1", []);
@@ -31,6 +32,8 @@ const ProductsProvider = ({ children }) => {
         saveCartProduct,
         wishElements,
         saveWishProduct,
+        orders,
+        setOrders,
       }}
     >
       {children}

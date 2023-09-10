@@ -3,16 +3,20 @@ import { NavBar } from "../components/NavBar";
 import { ProductsContext } from "../context";
 import "../styles/tailwind.css";
 import { CartProduct } from "../components/CartProduct";
+import { createOrder } from "../addTo";
 
 const Cart = () => {
   const { cartElements, saveCartProduct } = useContext(ProductsContext);
   const { total } = useContext(ProductsContext);
 
+  const { setOrders, orders } = useContext(ProductsContext);
   const [svgCompletedVisible, setSvgCompletedVisible] = useState(false);
   const handleCheckoutButton = () => {
+    createOrder(cartElements, setOrders, orders);
     saveCartProduct([]);
     setSvgCompletedVisible(!svgCompletedVisible);
   };
+
   return (
     <div className="w-full h-auto flex flex-col items-center relative">
       <NavBar />

@@ -8,7 +8,10 @@ const handleTotal = (cart, setTotal) => {
   const totalToPay = allPrices
     .reduce((acc, actual) => acc + actual, 0)
     .toFixed(2);
-  setTotal(totalToPay);
+  if (setTotal !== undefined) {
+    setTotal(totalToPay);
+  }
+  return totalToPay;
 };
 
 const addToList = (id, list, productData, saveProduct) => {
@@ -27,4 +30,19 @@ const removeItemFromList = (id, list, saveProduct) => {
   newList.splice(productIndex, 1);
   saveProduct(newList);
 };
-export { handleTotal, addToList, removeItemFromList };
+
+const createOrder = (products, setOrders, orders) => {
+  const getTodayDate = new Date();
+  const day = getTodayDate.getDate();
+  const month = getTodayDate.getMonth();
+  const year = getTodayDate.getFullYear();
+  const dateOrder = `${day}.${month}.${year}`;
+
+  const newOrder = {
+    date: dateOrder,
+    products: products,
+  };
+  const allOrders = [...orders, newOrder];
+  setOrders(allOrders);
+};
+export { handleTotal, addToList, removeItemFromList, createOrder };
