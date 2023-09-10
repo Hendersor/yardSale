@@ -109,6 +109,10 @@ const NavBar = () => {
           className="lg:flex w-6 h-6 cursor-pointer"
           src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1694300241/truck_u7w0vj.svg"
           alt="orders icon"
+          onClick={() => {
+            handleNavigate("/orders");
+            setNewWishNot(false);
+          }}
         />
 
         <img
