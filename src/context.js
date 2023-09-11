@@ -12,6 +12,7 @@ const ProductsProvider = ({ children }) => {
   const [newProductNot, setNewProductNot] = useState(false);
   const [cartElements, saveCartProduct] = useLocalStorage("CART_V1", []);
   const [wishElements, saveWishProduct] = useLocalStorage("WISH_V1", []);
+  const [ordersElements, saveOrders] = useLocalStorage("ORDERS_V1", []);
 
   return (
     <ProductsContext.Provider
@@ -34,6 +35,8 @@ const ProductsProvider = ({ children }) => {
         saveWishProduct,
         orders,
         setOrders,
+        ordersElements,
+        saveOrders,
       }}
     >
       {children}

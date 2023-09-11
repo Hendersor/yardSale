@@ -8,11 +8,12 @@ import { createOrder } from "../addTo";
 const Cart = () => {
   const { cartElements, saveCartProduct } = useContext(ProductsContext);
   const { total } = useContext(ProductsContext);
+  const { saveOrders } = useContext(ProductsContext);
 
   const { setOrders, orders } = useContext(ProductsContext);
   const [svgCompletedVisible, setSvgCompletedVisible] = useState(false);
   const handleCheckoutButton = () => {
-    createOrder(cartElements, setOrders, orders);
+    createOrder(cartElements, setOrders, orders, saveOrders);
     saveCartProduct([]);
     setSvgCompletedVisible(!svgCompletedVisible);
   };
