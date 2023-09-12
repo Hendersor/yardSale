@@ -35,8 +35,8 @@ const FavoriteP = ({ image, name, price, id, handleCart }) => {
         />
         <img
           onClick={handleRemove}
-          className="w-3 h-3 cursor-pointer"
-          src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1686019243/Shape_xtog4c.png"
+          className="w-5 h-5 cursor-pointer"
+          src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1694544003/x_f7l23c.svg"
           alt="cross icon"
         />
       </div>

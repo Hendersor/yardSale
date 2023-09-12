@@ -31,7 +31,7 @@ const removeItemFromList = (id, list, saveProduct) => {
   saveProduct(newList);
 };
 
-const createOrder = (products, setOrders, orders, saveOrders) => {
+const createOrder = (order, saveOrders, ordersElements) => {
   const getTodayDate = new Date();
   const day = getTodayDate.getDate();
   const month = getTodayDate.getMonth();
@@ -40,10 +40,9 @@ const createOrder = (products, setOrders, orders, saveOrders) => {
 
   const newOrder = {
     date: dateOrder,
-    products: products,
+    products: order,
   };
-  const allOrders = [...orders, newOrder];
-  setOrders(allOrders);
+  const allOrders = [...ordersElements, newOrder];
   saveOrders(allOrders);
 };
 export { handleTotal, addToList, removeItemFromList, createOrder };

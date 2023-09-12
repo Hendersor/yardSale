@@ -32,9 +32,13 @@ const Description = ({
           alt="product image"
         />
 
-        <div className="flex absolute w-10 h-10 rounded-full bg-slate-100  justify-center items-center cursor-pointer top-2 left-2">
-          <RxCross2 className="" onClick={() => handleDescription()} />
-        </div>
+        <figure className="flex absolute w-10 h-10 rounded-full bg-slate-100  justify-center items-center cursor-pointer top-2 left-2">
+          <img
+            src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1694544003/x_f7l23c.svg"
+            className=""
+            onClick={() => handleDescription()}
+          />
+        </figure>
       </figure>
 
       <div className="w-full h-1/2 flex flex-col justify-evenly items-center text-gray-500">

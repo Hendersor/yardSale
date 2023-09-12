@@ -34,7 +34,7 @@ const CartProduct = ({ name, price, img, id }) => {
           <img
             onClick={() => removeItem()}
             className="cursor-pointer"
-            src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1686019243/Shape_xtog4c.png"
+            src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1694544003/x_f7l23c.svg"
             alt="icon"
           />
         </div>
