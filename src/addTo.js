@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 const findProduct = (productData, id) => {
   const getProduct = productData.filter((p) => p.id === id);
   return getProduct;
@@ -39,6 +41,7 @@ const createOrder = (order, saveOrders, ordersElements) => {
   const dateOrder = `${day}.${month}.${year}`;
 
   const newOrder = {
+    id: uuidv4(),
     date: dateOrder,
     products: order,
   };

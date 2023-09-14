@@ -54,7 +54,9 @@ const NavBar = () => {
         />
       </figure>
 
-      {activeLink !== "/wish" && activeLink !== "/cart" ? (
+      {activeLink !== "/wish" &&
+      activeLink !== "/cart" &&
+      activeLink !== "/orders" ? (
         <ul className="hidden md:hidden lg:flex  items-center h-14 w-full overflow-auto text-[#C7C7C7] gap-x-4 mx-4 md:justify-center md:w-2/3 lg:absolute lg:left-10">
           <li
             className="hover:text-[#ACD9B2] cursor-pointer"

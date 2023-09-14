@@ -37,8 +37,8 @@ const Cart = () => {
           : ""}
         {svgCompletedVisible && (
           <img
-            className="w-40 lg:w-52"
-            src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1687023320/completed_ktmuoz.svg"
+            className="w-60 lg:w-80"
+            src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1694315524/undraw_on_the_way_re_swjt_ba8ogo.svg"
             alt="completedIcon"
           />
         )}
