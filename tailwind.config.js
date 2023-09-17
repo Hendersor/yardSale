@@ -20,6 +20,7 @@ module.exports = {
         500: "500px",
         550: "520px",
         530: "530px",
+        50: "50vh",
       },
     },
     fontWeight: {

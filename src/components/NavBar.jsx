@@ -26,10 +26,11 @@ const NavBar = () => {
 
   const { setNewWishNot, newWishNot } = useContext(ProductsContext);
   const { newProductNot, setNewProductNot } = useContext(ProductsContext);
+  const { newOrderNot, setNewOrderNot } = useContext(ProductsContext);
 
   return (
-    <nav className="w-full h-14 relative flex items-center justify-between px-2 md:w-11/12 md:my-0 md:mx-auto lg:relative">
-      <figure className="h-1/2 w-10 relative flex justify-center items-center lg:hidden">
+    <nav className="w-full h-14 relative flex items-center justify-between px-4 md:w-11/12 md:my-0 md:mx-auto lg:relative">
+      <figure className="h-1/2 w-16 relative flex justify-start items-center lg:hidden">
         <img
           src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1694298898/heart_vvlxme.svg"
           className="text-2xl"
@@ -39,7 +40,7 @@ const NavBar = () => {
           }}
         />
         {newWishNot && (
-          <div className="w-2 h-2 rounded-full bg-red-600 absolute top-0 right-1" />
+          <div className="w-2 h-2 rounded-full bg-red-600 absolute top-0 right-9" />
         )}
       </figure>
 
@@ -113,9 +114,12 @@ const NavBar = () => {
           alt="orders icon"
           onClick={() => {
             handleNavigate("/orders");
-            setNewWishNot(false);
+            setNewOrderNot(false);
           }}
         />
+        {newOrderNot && (
+          <div className="w-2 h-2 rounded-full bg-[#ACD9B2] absolute top-0 right-10 " />
+        )}
 
         <img
           onClick={() => {

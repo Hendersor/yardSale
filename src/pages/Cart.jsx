@@ -9,6 +9,7 @@ const Cart = () => {
   const { cartElements, saveCartProduct } = useContext(ProductsContext);
   const { total } = useContext(ProductsContext);
   const { ordersElements, saveOrders } = useContext(ProductsContext);
+  const { setNewOrderNot } = useContext(ProductsContext);
 
   const [svgCompletedVisible, setSvgCompletedVisible] = useState(false);
   const handleCheckoutButton = () => {
@@ -18,10 +19,14 @@ const Cart = () => {
   };
 
   return (
-    <div className="w-full h-auto flex flex-col items-center relative">
+    <div className="w-full h-screen flex flex-col items-center relative">
       <NavBar />
 
-      <h1 className="font-medium md:text-lg my-2">Shopping cart</h1>
+      {cartElements.length !== 0 ? (
+        <h1 className="font-medium md:text-lg my-2">Shopping cart</h1>
+      ) : (
+        ""
+      )}
 
       <div className="w-full h-auto flex flex-col content-evenly items-center justify-center overflow-auto">
         {cartElements.length !== 0
@@ -36,19 +41,33 @@ const Cart = () => {
             ))
           : ""}
         {svgCompletedVisible && (
-          <img
-            className="w-60 lg:w-80"
-            src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1694315524/undraw_on_the_way_re_swjt_ba8ogo.svg"
-            alt="completedIcon"
-          />
+          <figure className="w-full h-[50vh] flex flex-col items-center justify-center lg:h-full">
+            <img
+              className="w-4/5 md:w-2/4"
+              src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1694315524/undraw_on_the_way_re_swjt_ba8ogo.svg"
+              alt="completedIcon"
+            />
+            <h1 className="md:text-lg w-3/5 text-center mt-5">
+              Your order is in. Thank you!
+            </h1>
+          </figure>
         )}
 
         {cartElements.length === 0 && svgCompletedVisible !== true ? (
-          <img
-            className="w-40 lg:w-52"
-            src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1687031140/undraw_empty_cart_co35_1_xq4jac.svg"
-            alt="empty cart icon"
-          />
+          <figure className="w-full h-full flex flex-col items-center justify-center lg:h-full">
+            <img
+              className="w-4/5 md:w-2/4"
+              src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1687031140/undraw_empty_cart_co35_1_xq4jac.svg"
+              alt="empty cart icon"
+            />
+            {cartElements.length === 0 ? (
+              <h1 className="md:text-lg w-3/5 text-center mt-5">
+                Cart's looking lonely. Shop away!
+              </h1>
+            ) : (
+              ""
+            )}
+          </figure>
         ) : (
           ""
         )}
@@ -68,7 +87,9 @@ const Cart = () => {
                 total === 0 ? "hidden" : ""
               }`}
               disabled={total === 0}
-              onClick={() => handleCheckoutButton()}
+              onClick={() => {
+                handleCheckoutButton(), setNewOrderNot(true);
+              }}
             >
               Checkout
             </button>

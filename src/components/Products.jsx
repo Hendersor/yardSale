@@ -17,7 +17,7 @@ const Products = ({ setDescription, description }) => {
   }, []);
 
   return (
-    <div className="w-full h-auto px-2 flex flex-wrap justify-evenly items-start gap-2 py-2">
+    <div className="w-full h-auto px-4 flex flex-wrap justify-evenly items-start gap-2 py-2">
       {filteredData.length === 0
         ? productData.map((p) => (
             <Product

@@ -15,10 +15,14 @@ const WishList = () => {
   };
 
   return (
-    <div className="w-full h-auto">
+    <div className="w-full h-screen">
       <NavBar />
-      <h1 className="font-medium md:text-lg my-2 text-center">Wish List</h1>
 
+      {wishElements.length !== 0 ? (
+        <h1 className="font-medium md:text-lg my-2 text-center">Wish List</h1>
+      ) : (
+        ""
+      )}
       <div className="w-full h-auto py-2.5 flex flex-col justify-start content-evenly items-center">
         {wishElements.length !== 0 ? (
           wishElements.map((p) => (
@@ -32,11 +36,20 @@ const WishList = () => {
             />
           ))
         ) : (
-          <img
-            className="w-40 lg:w-52"
-            src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1687034497/wish_eok6jg.svg"
-            alt="wish list icon"
-          />
+          <div className="w-full h-[50vh] flex flex-col items-center justify-center lg:h-full">
+            <img
+              className="w-4/5 md:w-2/4 "
+              src="https://res.cloudinary.com/dwdz4mn27/image/upload/v1687034497/wish_eok6jg.svg"
+              alt="wish list icon"
+            />
+            {wishElements.length === 0 ? (
+              <h1 className="md:text-lg w-3/5 text-center mt-5">
+                Your wishlist is waiting. Add products!
+              </h1>
+            ) : (
+              ""
+            )}
+          </div>
         )}
       </div>
     </div>

@@ -24,7 +24,7 @@ const SearchBar = ({ description, setDescription }) => {
   };
 
   return (
-    <div className="relative w-full h-28 px-2 flex flex-col justify-between font-['Quicksand'] md:items-center lg:h-20 lg:items-start lg:justify-center lg:px-10">
+    <div className="relative w-full h-28 px-4 flex flex-col justify-between font-['Quicksand'] md:items-center lg:h-20 lg:items-start lg:justify-center lg:px-10">
       <div className="flex justify-start items-center h-10 rounded-lg bg-slate-100 md:w-2/3 lg:w-80">
         <img
           className="mx-2"
