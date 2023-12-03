@@ -1,49 +1,47 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ProductsContext } from "../context";
 import { fetchData } from "../apiConnection";
 import { Product } from "./Product";
+import { LoadingSkeleton } from "./LoadingSkeleton";
 
 const Products = ({ setDescription, description }) => {
   const API = "https://fakestoreapi.com/products";
   const { productData, setProductData } = useContext(ProductsContext);
   const { filteredData } = useContext(ProductsContext);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getProducts = async () => {
-      const products = await fetchData(API);
-      setProductData(products);
+      try {
+        const products = await fetchData(API);
+        setProductData(products);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching products", error);
+        setLoading(false);
+      }
     };
     getProducts();
   }, []);
 
   return (
     <div className="w-full h-auto px-4 flex flex-wrap justify-evenly items-start gap-2 py-2">
-      {filteredData.length === 0
-        ? productData.map((p) => (
-            <Product
-              setDescription={setDescription}
-              title={p.title}
-              category={p.category}
-              key={p.id}
-              id={p.id}
-              image={p.image}
-              price={p.price}
-              productDescription={p.description}
-            />
-          ))
-        : filteredData.map((p) => (
-            <Product
-              setDescription={setDescription}
-              description={description}
-              title={p.title}
-              category={p.category}
-              key={p.id}
-              id={p.id}
-              image={p.image}
-              price={p.price}
-              productDescription={p.description}
-            />
-          ))}
+      {loading ? (
+        <LoadingSkeleton />
+      ) : (
+        (filteredData.length === 0 ? productData : filteredData).map((p) => (
+          <Product
+            setDescription={setDescription}
+            title={p.title}
+            category={p.category}
+            key={p.id}
+            id={p.id}
+            image={p.image}
+            price={p.price}
+            productDescription={p.description}
+          />
+        ))
+      )}
     </div>
   );
 };
