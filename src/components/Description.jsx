@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { addToList } from "../addTo";
 import { ProductsContext } from "../context";
 
@@ -22,6 +22,13 @@ const Description = ({
   const handleCart = (id) => {
     addToList(id, cartElements, productData, saveCartProduct);
   };
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "visible";
+    };
+  }, []);
 
   return (
     <div className="absolute top-0 left-0 w-full h-[530px] bg-white max-w-xs md:right-0 md:h-[500px] lg:h-[520px]">
